@@ -1,0 +1,59 @@
+{
+  "data": {
+    "user_agent_availability": {
+      "channel_preferences": [{
+        "available": true,
+        "channel": "chat",
+        "enabled": true
+      }, {
+        "available": true,
+        "channel": "freshsales",
+        "enabled": true
+      }],
+      "user_uuid": "697330448392323085",
+      "user_information": [{
+        "account_id": 1712320639099,
+        "email": "abuthahir.sulaiman@freshworks.com",
+        "name": "Abu Khan",
+        "updated_at": "2024-08-12T09:05:36.683Z",
+        "user_id": 132
+      }]
+    },
+    "associations": {},
+    "actor": {
+      "id": "132",
+      "name": "Abu Khan",
+      "type": "agent"
+    },
+    "changes": {
+      "channel_preferences": {
+        "changed": [
+          [{
+            "available": false,
+            "channel": "chat",
+            "enabled": true
+          }, {
+            "available": true,
+            "channel": "chat",
+            "enabled": true
+          }],
+          [{
+            "available": false,
+            "channel": "freshsales",
+            "enabled": true
+          }, {
+            "available": true,
+            "channel": "freshsales",
+            "enabled": true
+          }]
+        ]
+      }
+    }
+  },
+  "region": "US",
+  "account_id": "1712320639099",
+  "domain": "wildcataarb8-9a9e36ccfaaceeb-b8.fsales.dev",
+  "event": "onUserAgentAvailabilityUpdate",
+  "timestamp": "1724133753887",
+  "version": "2.0"
+}

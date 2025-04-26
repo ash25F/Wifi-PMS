@@ -1,0 +1,126 @@
+{
+  "timestamp": 1496400354326,
+  "account_id": "13",
+  "domain": "sample.freshsales.io",
+  "event": "onProductUpdate",
+  "region": "US",
+  "version": "2.0",
+  "productContext": {
+    "url": "https://sample.freshsales.io",
+    "name": "freshsales"
+  },
+  "data": {
+    "product": {
+      "name": "Samsung",
+      "category": "Hardware",
+      "product_code": "S11",
+      "sku_number": "MOSA12309",
+      "parent_product": 547920,
+      "valid_till": "2023-01-05T00:00:00Z",
+      "is_active": true,
+      "created_at": "2022-09-07T08:47:04Z",
+      "updated_at": "2022-09-07T08:47:04Z",
+      "description": "Extra 2GB RAM",
+      "id": 547921,
+      "is_deleted": true,
+      "import_csv_id": 9,
+      "import_id": 18,
+      "creator_id": 523562,
+      "custom_fields": {
+        "cf_number": 2,
+        "cf_text": "Hello"
+      }
+    },
+    "associations": {
+      "product_pricings": [
+        {
+          "id": 70000004121,
+          "currency_code": "USD",
+          "unit_price": "15.0",
+          "setup_fee": 0.0,
+          "billing_type": 1,
+          "billing_cycle": null,
+          "created_at": "2022-10-21T04:29:23.000Z"
+        }
+      ],
+      "creator": {
+        "id": 523562,
+        "name": "Abinaya S",
+        "type": "user",
+        "email": "abinaya.srinivasan@freshworks.com",
+        "is_active": true,
+        "work_number": null,
+        "mobile_number": null,
+        "time_zone": "Eastern Time (US & Canada)",
+        "created_at": "2022-08-29T08:59:50Z",
+        "updated_at": "2022-09-07T08:40:13Z",
+        "deal_pipeline_id": 322010,
+        "job_title": "Engineer"
+      },
+      "owner": {
+        "id": 523562,
+        "name": "Abinaya S",
+        "type": "user",
+        "email": "abinaya.srinivasan@freshworks.com",
+        "is_active": true,
+        "work_number": null,
+        "mobile_number": null,
+        "time_zone": "Eastern Time (US & Canada)",
+        "created_at": "2022-08-29T08:59:50Z",
+        "updated_at": "2022-09-07T08:40:13Z",
+        "deal_pipeline_id": 322010,
+        "job_title": "Engineer"
+      },
+      "updater": {
+        "id": 523562,
+        "name": "Abinaya S",
+        "type": "user",
+        "email": "abinaya.srinivasan@freshworks.com",
+        "is_active": true,
+        "work_number": null,
+        "mobile_number": null,
+        "time_zone": "Eastern Time (US & Canada)",
+        "created_at": "2022-08-29T08:59:50Z",
+        "updated_at": "2022-09-07T08:40:13Z",
+        "deal_pipeline_id": 322010,
+        "job_title": "Engineer"
+      }
+
+    },
+    "changes": {
+      "model_changes": {
+        "name": [
+          "Samsung",
+          "Apple"
+        ],
+        "product_code": [
+          "S11",
+          "A01"
+        ],
+        "sku_number": [
+          "MOSA12309",
+          "A12309"
+        ],
+        "description": [
+          "Extra 2GB RAM",
+          "Extra Security"
+        ],
+        "updated_at": [
+          "2022-09-07T08:54:44Z",
+          "2022-09-07T08:56:41Z"
+        ],
+        "is_deleted": [
+          false,
+          true
+        ]
+      },
+      "system_changes": {},
+      "misc_changes": {}
+    },
+    "actor": {
+      "id": 0,
+      "name": "System",
+      "type": "system"
+    }
+  }
+}

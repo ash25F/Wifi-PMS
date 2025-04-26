@@ -1,0 +1,184 @@
+{
+  "data": {
+    "email_conversation": {
+      "id": 1190852559,
+      "email_id": 3157290931,
+      "creator_id": 3000026287,
+      "template_id": 1000394197,
+      "direction": "Outgoing",
+      "status": "Sent",
+      "subject": "Sample Subject",
+      "needs_tracking": true,
+      "scheduled_at": "2023-05-17T12:02:39Z",
+      "date_header": "2023-05-17T12:02:39Z",
+      "message_id": "<SalesSequence.3000027847.baad.81911def@sample.freshsales.io>",
+      "ref_conversation_id": "<SalesSequence.3000027847.baad.81912def@sample.freshsales.io>",
+      "email_status": "Opened",
+      "unsubscribe": false,
+      "created_at": "2023-05-17T12:01:30Z",
+      "updated_at": "2023-05-17T12:22:09Z",
+      "in_reply_to": "<SalesSequence.3000027847.baad.728d31b5@sample.freshsales.io>",
+      "email_association": true,
+      "email_recipients": [
+        {
+          "id": 2614295599,
+          "email_id": 3157290931,
+          "conversation_id": 1190852559,
+          "targetable_id": 2000089061,
+          "targetable_type": "FdMultitenant::User",
+          "field": "from",
+          "email_address": "sampleton@example.com",
+          "email_name": "James Sampleton",
+          "bounced": false,
+          "opened": false,
+          "clicked": false,
+          "bounced_time": null,
+          "opened_time": null,
+          "clicked_time": null,
+          "created_at": "2023-05-17T12:01:30Z",
+          "updated_at": "2023-05-17T12:01:30Z",
+          "unsubscribed": false,
+          "unsubscribed_time": null,
+          "bounce_reasons": null,
+          "uuid": "516516901656282344"
+        },
+        {
+          "id": 2614295699,
+          "email_id": 3157290931,
+          "conversation_id": 1190852559,
+          "targetable_id": 2064574201,
+          "targetable_type": "Lead",
+          "field": "to",
+          "email_address": "sampleton_to@example.com",
+          "email_name": "John Sampleton",
+          "bounced": true,
+          "opened": true,
+          "clicked": true,
+          "bounced_time": "2023-05-17T12:22:09Z",
+          "opened_time": "2023-05-17T12:22:09Z",
+          "clicked_time": "2023-05-17T12:22:09Z",
+          "created_at": "2023-05-17T12:01:30Z",
+          "updated_at": "2023-05-17T12:22:09Z",
+          "unsubscribed": true,
+          "unsubscribed_time": "2023-05-17T12:22:09Z",
+          "bounce_reasons": null,
+          "uuid": "516516901656282344"
+        },
+        {
+          "id": 2614195699,
+          "email_id": 3157290931,
+          "conversation_id": 1190852559,
+          "targetable_id": 2000039061,
+          "targetable_type": "FdMultitenant::User",
+          "field": "reply_to",
+          "email_address": "sampleton_reply@example.com",
+          "email_name": "Jim Sampleton",
+          "bounced": false,
+          "opened": false,
+          "clicked": false,
+          "bounced_time": null,
+          "opened_time": null,
+          "clicked_time": null,
+          "created_at": "2023-05-17T12:01:30Z",
+          "updated_at": "2023-05-17T12:01:30Z",
+          "unsubscribed": false,
+          "unsubscribed_time": null,
+          "bounce_reasons": null,
+          "uuid": "516516901656282344"
+        }
+      ],
+      "source_additional_info": {
+        "id": 12000007883,
+        "name": "Sample Sequence",
+        "source": "SalesSequence"
+      }
+    },
+    "associations": {
+      "creator": {
+        "id": 3000026287,
+        "name": "James Sampleton",
+        "type": "user",
+        "email": "sampleton@example.com",
+        "is_active": true,
+        "work_number": "+919999999999",
+        "mobile_number": "+919999999999",
+        "time_zone": "Chennai",
+        "created_at": "2018-03-13T10:32:13Z",
+        "updated_at": "2023-02-21T11:42:50Z",
+        "deal_pipeline_id": 36701,
+        "job_title": "Sales Agent",
+        "uuid": "110028971385303372",
+        "reports_to_id": 9000005036
+      }
+    },
+    "actor": { "id": 0, "name": "System", "type": "system" },
+    "changes": {
+      "model_changes": {
+        "email_status": ["Sent", "Opened"],
+        "updated_at": ["2023-05-17T12:01:41Z", "2023-05-17T12:22:09Z"],
+        "email_recipients": {
+          "changed": [
+            [
+              {
+                "id": 2614295699,
+                "email_id": 3157290931,
+                "conversation_id": 1190852559,
+                "targetable_id": 2064574202,
+                "targetable_type": "Lead",
+                "field": "to",
+                "email_address": "sampleton_to_1@example.com",
+                "email_name": "John Sampleton 1",
+                "bounced": false,
+                "opened": true,
+                "clicked": false,
+                "bounced_time": null,
+                "opened_time": "2023-05-17T12:22:09Z",
+                "clicked_time": null,
+                "created_at": "2023-05-17T12:01:30Z",
+                "updated_at": "2023-05-17T12:22:09Z",
+                "unsubscribed": false,
+                "unsubscribed_time": null,
+                "bounce_reasons": null,
+                "uuid": "516516901656282345"
+              },
+              {
+                "id": 2614295699,
+                "email_id": 3157290931,
+                "conversation_id": 1190852559,
+                "targetable_id": 2064574201,
+                "targetable_type": "Lead",
+                "field": "to",
+                "email_address": "sampleton_to@example.com",
+                "email_name": "John Sampleton",
+                "bounced": false,
+                "opened": true,
+                "clicked": false,
+                "bounced_time": null,
+                "opened_time": "2023-05-17T12:22:09Z",
+                "clicked_time": null,
+                "created_at": "2023-05-17T12:01:30Z",
+                "updated_at": "2023-05-17T12:22:09Z",
+                "unsubscribed": false,
+                "unsubscribed_time": null,
+                "bounce_reasons": null,
+                "uuid": "516516901656282344"
+              }
+            ]
+          ]
+        }
+      },
+      "system_changes": {},
+      "misc_changes": {}
+    }
+  },
+  "account_id": "101109",
+  "domain": "sample.freshsales.io",
+  "event": "onEmailConversationUpdate",
+  "timestamp": 1684325979.9272034,
+  "version": "2.0",
+  "region": "US",
+  "productContext": {
+    "url": "https://sample.freshsales.io",
+    "name": "freshsales"
+  }
+}

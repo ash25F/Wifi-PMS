@@ -1,0 +1,58 @@
+{
+  "data": {
+    "email_conversation": {
+      "id": 1190852559,
+      "email_recipient_ids": [2614295599, 2614295699, 2614195699],
+      "message_id": "<SalesSequence.3000027847.baad.81911def@sample.freshsales.io>",
+      "created_at": "2023-05-17T12:01:30Z",
+      "updated_at": "2023-05-17T12:22:09Z",
+      "source_additional_info": {}
+    },
+    "associations": {
+      "creator": {
+        "id": 3000026287,
+        "name": "James Sampleton",
+        "type": "user",
+        "email": "sampleton@example.com",
+        "is_active": true,
+        "work_number": "+919999999999",
+        "mobile_number": "+919999999999",
+        "time_zone": "Chennai",
+        "created_at": "2018-03-13T10:32:13Z",
+        "updated_at": "2023-02-21T11:42:50Z",
+        "deal_pipeline_id": 36701,
+        "job_title": "Sales Agent",
+        "uuid": "110028971385303372",
+        "reports_to_id": 9000005036
+      }
+    },
+    "actor": {
+      "id": 3000026287,
+      "name": "James Sampleton",
+      "email": "sampleton@example.com",
+      "job_title": "Sales Agent",
+      "work_number": "+919999999999",
+      "mobile_number": "+919999999999",
+      "language": "en",
+      "time_zone": "Chennai",
+      "is_active": true,
+      "deal_pipeline_id": 36701,
+      "is_forgotten": false,
+      "created_at": "2018-03-13T10:32:13Z",
+      "updated_at": "2023-02-21T11:42:50Z",
+      "uuid": "110028971385303372",
+      "reports_to_id": 9000005036,
+      "type": "user"
+    }
+  },
+  "account_id": "101109",
+  "domain": "sample.freshsales.io",
+  "event": "onEmailConversationDelete",
+  "timestamp": 1684325979.9272034,
+  "version": "2.0",
+  "region": "US",
+  "productContext": {
+    "url": "https://sample.freshsales.io",
+    "name": "freshsales"
+  }
+}

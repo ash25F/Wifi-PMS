@@ -1,0 +1,104 @@
+{
+  "getLeads": {
+    "schema": {
+      "method": "GET",
+      "host": "00.us-west-2.api.hotelkeyapp.com",
+      "path": "/thirdparty/hotelbrand/stream/9a5c0f16-1b07-43dc-9468-ab65574e594a/poll?num_of_messages=10",
+      "protocol":"https",
+      "headers": {
+        "Authorization": "Basic <%= context.encondedToken %>",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    },
+    "options": {
+      "retryDelay": 1000
+    }
+  },
+  "acknowledgePoll": {
+    "schema": {
+      "method": "POST",
+      "host": "00.us-west-2.api.hotelkeyapp.com",
+      "path": "/thirdparty/hotelbrand/stream/9a5c0f16-1b07-43dc-9468-ab65574e594a/ack",
+      "protocol":"https",
+      "headers": {
+        "Authorization": "Basic <%= context.encondedToken %>",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    },
+    "options": {
+      "retryDelay": 1000
+    }
+  },
+  "getTerritories": {
+  "schema": {
+    "method": "GET",
+    "host": "<%= context.domain %>",
+    "path": "<%= context.path %>",
+    "headers": {
+      "Authorization": "Token token=<%= context.api_key %>",
+      "Content-Type": "application/json"
+    }
+  },
+  "options": {
+    "retryDelay": 1000
+  }
+},
+"getProducts": {
+"schema": {
+  "method": "POST",
+  "host": "<%= context.domain %>",
+  "path": "<%= context.path %>",
+  "headers": {
+    "Authorization": "Token token=<%= context.api_key %>",
+    "Content-Type": "application/json"
+  }
+},
+"options": {
+  "retryDelay": 1000
+}
+},
+"pushHKdata": {
+  "schema": {
+    "method": "POST",
+    "host": "<%= context.domain %>",
+    "path": "<%= context.path %>",
+    "headers": {
+      "Authorization": "Token token=<%= context.api_key %>",
+      "Content-Type": "application/json"
+    }
+  },
+  "options": {
+    "retryDelay": 1000
+  }
+},
+"pushDeal": {
+  "schema": {
+    "method": "POST",
+    "host": "<%= context.domain %>",
+    "path": "<%= context.path %>",
+    "headers": {
+      "Authorization": "Token token=<%= context.api_key %>",
+      "Content-Type": "application/json"
+    }
+  },
+  "options": {
+    "retryDelay": 1000
+  }
+},
+"getLeadSources": {
+  "schema": {
+    "method": "GET",
+    "host": "<%= context.domain %>",
+    "path": "<%= context.path %>",
+    "headers": {
+      "Authorization": "Token token=<%= context.api_key %>",
+      "Content-Type": "application/json"
+    }
+  },
+  "options": {
+    "retryDelay": 1000
+  }
+}
+}

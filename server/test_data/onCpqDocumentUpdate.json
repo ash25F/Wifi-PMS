@@ -1,0 +1,138 @@
+{
+  "timestamp": 1496400354326,
+  "account_id": "13",
+  "domain": "sample.freshsales.io",
+  "event": "onCpqDocumentUpdate",
+  "region": "US",
+  "version": "2.0",
+  "productContext": {
+    "url": "https://sample.freshsales.io",
+    "name": "freshsales"
+  },
+  "data": {
+    "cpq_document": {
+      "display_name": "new doc",
+      "document_number": "DOC-1",
+      "document_type": 1019868749,
+      "cpq_document_template_name": "document copy",
+      "deal_id": 6796197,
+      "sales_account_id": 5135558,
+      "contact_id": 8441389,
+      "amount": 677.0,
+      "base_currency_amount": "677.0",
+      "currency_code": "USD",
+      "stage": 1019868753,
+      "valid_till": "2022-09-22T00:00:00Z",
+      "shipping_address": "chennai",
+      "shipping_city": "chennai",
+      "shipping_state": "Tamil Nadu",
+      "shipping_zipcode": "600006",
+      "shipping_country": "India",
+      "billing_address": "604-5854 Beckford St.",
+      "billing_city": "Glendale",
+      "billing_state": "Arizona",
+      "billing_zipcode": "100652",
+      "billing_country": "USA",
+      "owner_id": 523562,
+      "territory_id": 818551,
+      "created_at": "2022-09-07T09:12:39Z",
+      "updated_at": "2022-09-07T09:12:39Z",
+      "id": 153150,
+      "display_id": 1,
+      "display_id_prefix": "DOC",
+      "is_deal_primary": false,
+      "cpq_document_template_id": 168209,
+      "is_deleted": false,
+      "creator_id": 523562,
+      "custom_fields": {
+        "cf_number": 2,
+        "cf_text": "Hello"
+      }
+    },
+    "associations": {
+      "cpq_document_product_associations": [
+        {
+          "id": 70000010084,
+          "currency_code": "USD",
+          "unit_price": "13.0",
+          "setup_fee": "0.0",
+          "billing_type": 1,
+          "billing_cycle": null,
+          "created_at": "2022-10-21T04:29:49.000Z"
+        },
+        {
+          "id": 70000010085,
+          "currency_code": "USD",
+          "unit_price": "12.0",
+          "setup_fee": "0.0",
+          "billing_type": 1,
+          "billing_cycle": null,
+          "created_at": "2022-10-21T04:29:49.000Z"
+        }
+      ]
+    },
+    "changes": {
+      "model_changes": {
+        "deal_id": [
+          6796197,
+          6891801
+        ],
+        "sales_account_id": [
+          5135558,
+          5212715
+        ],
+        "contact_id": [
+          8441389,
+          8597857
+        ],
+        "amount": [
+          677,
+          0
+        ],
+        "valid_till": [
+          "2022-09-22T00:00:00Z",
+          "2022-09-30T00:00:00Z"
+        ],
+        "billing_address": [
+          "604-5854 Beckford St.",
+          null
+        ],
+        "billing_city": [
+          "Glendale",
+          null
+        ],
+        "billing_state": [
+          "Arizona",
+          null
+        ],
+        "billing_zipcode": [
+          "100652",
+          null
+        ],
+        "billing_country": [
+          "USA",
+          null
+        ],
+        "updater_id": [
+          null,
+          523562
+        ],
+        "updated_at": [
+          "2022-09-07T09:12:39Z",
+          "2022-09-07T09:15:51Z"
+        ],
+        "base_currency_amount": [
+          677,
+          0
+        ]
+      },
+      "system_changes": {},
+      "misc_changes": {}
+    },
+    "actor": {
+      "id": 0,
+      "name": "System",
+      "type": "system"
+    }
+  }
+}
