@@ -42,8 +42,8 @@ exports = {
  
   // Scheduled Trigger
   onScheduledEventHandler: async function () {
-    const fetchToken = "MzRjYzc2ZTktZTVkNS00ZWI1LWFkNmQtZWEyOTQ0Mzc5NTBmOjc3YzA2NDYwLWQxNGEtNDI2Yi05Y2U3LTY0YTViOThhYzM1MQ==";
-    const wifiAuth = "YWRtaW5pc3RyYXRvcjphZG1pbmlzdHJhdG9y";
+    const fetchToken = //Fdk Token;
+    const wifiAuth = //WifiAuth Token;
  
     try {
       const res = await $request.invokeTemplate("getLeads", {
