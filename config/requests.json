@@ -3,12 +3,13 @@
     "schema": {
       "method": "GET",
       "host": "00.us-west-2.api.hotelkeyapp.com",
-      "path": "/thirdparty/hotelbrand/stream/9a5c0f16-1b07-43dc-9468-ab65574e594a/poll?num_of_messages=10",
-      "protocol":"https",
+      "path": "/thirdparty/hotelbrand/stream/34cc76e9-e5d5-4eb5-ad6d-ea294437950f/poll?num_of_messages=1",
+      "protocol": "https",
       "headers": {
-        "Authorization": "Basic <%= context.encondedToken %>",
+        "Authorization": "Basic <%= context.encodedToken %>",
         "Content-Type": "application/json",
         "Accept": "application/json"
+        
       }
     },
     "options": {
@@ -20,9 +21,9 @@
       "method": "POST",
       "host": "00.us-west-2.api.hotelkeyapp.com",
       "path": "/thirdparty/hotelbrand/stream/9a5c0f16-1b07-43dc-9468-ab65574e594a/ack",
-      "protocol":"https",
+      "protocol": "https",
       "headers": {
-        "Authorization": "Basic <%= context.encondedToken %>",
+        "Authorization": "Basic <%= context.encodedToken %>",
         "Content-Type": "application/json",
         "Accept": "application/json"
       }
@@ -31,74 +32,36 @@
       "retryDelay": 1000
     }
   },
-  "getTerritories": {
-  "schema": {
-    "method": "GET",
-    "host": "<%= context.domain %>",
-    "path": "<%= context.path %>",
-    "headers": {
-      "Authorization": "Token token=<%= context.api_key %>",
-      "Content-Type": "application/json"
+  "checkInGuest": {
+    "schema": {
+      "method": "POST",
+      "host": "indisytays-wifi.com:10080",  
+      "path": "/24online/service/PMSService/checkInGuest",
+      "protocol": "http",  
+      "headers": {
+        "Authorization":"Basic <%= context.Wifi_auth %>",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    },
+    "options": {
+      "retryDelay": 1000
     }
   },
-  "options": {
-    "retryDelay": 1000
-  }
-},
-"getProducts": {
-"schema": {
-  "method": "POST",
-  "host": "<%= context.domain %>",
-  "path": "<%= context.path %>",
-  "headers": {
-    "Authorization": "Token token=<%= context.api_key %>",
-    "Content-Type": "application/json"
-  }
-},
-"options": {
-  "retryDelay": 1000
-}
-},
-"pushHKdata": {
-  "schema": {
-    "method": "POST",
-    "host": "<%= context.domain %>",
-    "path": "<%= context.path %>",
-    "headers": {
-      "Authorization": "Token token=<%= context.api_key %>",
-      "Content-Type": "application/json"
+  "checkOutGuest": {
+    "schema": {
+      "method": "POST",
+      "host": "indisytays-wifi.com:10080",  
+      "path": "/24online/service/PMSService/checkOutGuest",
+      "protocol": "http",  
+      "headers": {
+        "Authorization":"Basic <%= context.Wifi_auth %>",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    },
+    "options": {
+      "retryDelay": 1000
     }
-  },
-  "options": {
-    "retryDelay": 1000
   }
-},
-"pushDeal": {
-  "schema": {
-    "method": "POST",
-    "host": "<%= context.domain %>",
-    "path": "<%= context.path %>",
-    "headers": {
-      "Authorization": "Token token=<%= context.api_key %>",
-      "Content-Type": "application/json"
-    }
-  },
-  "options": {
-    "retryDelay": 1000
-  }
-},
-"getLeadSources": {
-  "schema": {
-    "method": "GET",
-    "host": "<%= context.domain %>",
-    "path": "<%= context.path %>",
-    "headers": {
-      "Authorization": "Token token=<%= context.api_key %>",
-      "Content-Type": "application/json"
-    }
-  },
-  "options": {
-    "retryDelay": 1000
-  }
-}
 }

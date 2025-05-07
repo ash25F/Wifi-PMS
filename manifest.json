@@ -13,16 +13,14 @@
       "requests": {
         "getLeads": {},
         "acknowledgePoll": {},
-        "getTerritories": {},
-        "getProducts": {},
-        "pushHKdata": {},
-        "pushDeal": {},
-        "getLeadSources": {}
+        "checkInGuest": {},
+        "checkOutGuest": {}
+
       }
     }
   },
   "engines": {
-    "node": "18.16.1",
+    "node": "18.20.8",
     "fdk": "9.3.1"
   }
 }
