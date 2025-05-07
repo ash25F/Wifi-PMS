@@ -1,0 +1,67 @@
+{
+  "getLeads": {
+    "schema": {
+      "method": "GET",
+      "host": "00.us-west-2.api.hotelkeyapp.com",
+      "path": "/thirdparty/hotelbrand/stream/34cc76e9-e5d5-4eb5-ad6d-ea294437950f/poll?num_of_messages=1",
+      "protocol": "https",
+      "headers": {
+        "Authorization": "Basic <%= context.encodedToken %>",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+        
+      }
+    },
+    "options": {
+      "retryDelay": 1000
+    }
+  },
+  "acknowledgePoll": {
+    "schema": {
+      "method": "POST",
+      "host": "00.us-west-2.api.hotelkeyapp.com",
+      "path": "/thirdparty/hotelbrand/stream/9a5c0f16-1b07-43dc-9468-ab65574e594a/ack",
+      "protocol": "https",
+      "headers": {
+        "Authorization": "Basic <%= context.encodedToken %>",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    },
+    "options": {
+      "retryDelay": 1000
+    }
+  },
+  "checkInGuest": {
+    "schema": {
+      "method": "POST",
+      "host": "indisytays-wifi.com:10080",  
+      "path": "/24online/service/PMSService/checkInGuest",
+      "protocol": "http",  
+      "headers": {
+        "Authorization":"Basic <%= context.Wifi_auth %>",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    },
+    "options": {
+      "retryDelay": 1000
+    }
+  },
+  "checkOutGuest": {
+    "schema": {
+      "method": "POST",
+      "host": "indisytays-wifi.com:10080",  
+      "path": "/24online/service/PMSService/checkOutGuest",
+      "protocol": "http",  
+      "headers": {
+        "Authorization":"Basic <%= context.Wifi_auth %>",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    },
+    "options": {
+      "retryDelay": 1000
+    }
+  }
+}

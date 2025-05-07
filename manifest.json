@@ -1,0 +1,26 @@
+{
+  "platform-version": "2.3",
+  "product": {
+    "freshworks_crm": {
+      "events": {
+        "onAppInstall": {
+          "handler": "onAppInstallHandler"
+        },
+        "onScheduledEvent": {
+          "handler": "onScheduledEventHandler"
+        }
+      },
+      "requests": {
+        "getLeads": {},
+        "acknowledgePoll": {},
+        "checkInGuest": {},
+        "checkOutGuest": {}
+
+      }
+    }
+  },
+  "engines": {
+    "node": "18.20.8",
+    "fdk": "9.3.1"
+  }
+}
