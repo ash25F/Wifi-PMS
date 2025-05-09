@@ -42,8 +42,8 @@ exports = {
   },
 
   onScheduledEventHandler: async function () {
-    const fetchToken = "MzRjYzc2ZTktZTVkNS00ZWI1LWFkNmQtZWEyOTQ0Mzc5NTBmOjc3YzA2NDYwLWQxNGEtNDI2Yi05Y2U3LTY0YTViOThhYzM1MQ==";
-    const wifiAuth = "YWRtaW5pc3RyYXRvcjphZG1pbmlzdHJhdG9y";
+    const fetchToken = //hk token
+    const wifiAuth = //wifiAuth
     const crmAuth = "YOUR_CRM_AUTH_TOKEN_HERE";
 
     try {
