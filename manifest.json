@@ -14,8 +14,9 @@
         "getLeads": {},
         "acknowledgePoll": {},
         "checkInGuest": {},
-        "checkOutGuest": {}
-
+        "checkOutGuest": {},
+        "searchCRMByPhone": {},
+        "updateCRMContactByPhone": {}
       }
     }
   },

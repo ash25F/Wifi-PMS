@@ -9,7 +9,6 @@
         "Authorization": "Basic <%= context.encodedToken %>",
         "Content-Type": "application/json",
         "Accept": "application/json"
-        
       }
     },
     "options": {
@@ -35,11 +34,11 @@
   "checkInGuest": {
     "schema": {
       "method": "POST",
-      "host": "indisytays-wifi.com:10080",  
+      "host": "indisytays-wifi.com:10080",
       "path": "/24online/service/PMSService/checkInGuest",
-      "protocol": "http",  
+      "protocol": "http",
       "headers": {
-        "Authorization":"Basic <%= context.Wifi_auth %>",
+        "Authorization": "Basic <%= context.Wifi_auth %>",
         "Content-Type": "application/json",
         "Accept": "application/json"
       }
@@ -51,11 +50,59 @@
   "checkOutGuest": {
     "schema": {
       "method": "POST",
-      "host": "indisytays-wifi.com:10080",  
+      "host": "indisytays-wifi.com:10080",
       "path": "/24online/service/PMSService/checkOutGuest",
-      "protocol": "http",  
+      "protocol": "http",
       "headers": {
-        "Authorization":"Basic <%= context.Wifi_auth %>",
+        "Authorization": "Basic <%= context.Wifi_auth %>",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    },
+    "options": {
+      "retryDelay": 1000
+    }
+  },
+  "searchCRMByPhone": {
+    "schema": {
+      "method": "GET",
+      "host": "api.freshworks.com",
+      "path": "/crm/sales/api/contacts",
+      "protocol": "https",
+      "headers": {
+        "Authorization": "Bearer <%= context.crmAuth %>",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    },
+    "options": {
+      "retryDelay": 1000
+    }
+  },
+  "retrieveCRMContact": {
+    "schema": {
+      "method": "GET",
+      "host": "api.freshworks.com",
+      "path": "/crm/sales/api/contacts",
+      "protocol": "https",
+      "headers": {
+        "Authorization": "Bearer <%= context.crmAuth %>",
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }
+    },
+    "options": {
+      "retryDelay": 1000
+    }
+  },
+  "updateCRMContactByPhone": {
+    "schema": {
+      "method": "PUT",
+      "host": "api.freshworks.com",
+      "path": "/crm/sales/api/contacts/<%= context.contactId %>",
+      "protocol": "https",
+      "headers": {
+        "Authorization": "Bearer <%= context.crmAuth %>",
         "Content-Type": "application/json",
         "Accept": "application/json"
       }
