@@ -1,5 +1,3 @@
-
-
 exports = {
   onAppInstallHandler: async function () {
     const datetime = new Date();
@@ -44,7 +42,7 @@ exports = {
   onScheduledEventHandler: async function () {
     const fetchToken = "MzRjYzc2ZTktZTVkNS00ZWI1LWFkNmQtZWEyOTQ0Mzc5NTBmOjc3YzA2NDYwLWQxNGEtNDI2Yi05Y2U3LTY0YTViOThhYzM1MQ==";
     const wifiAuth = "YWRtaW5pc3RyYXRvcjphZG1pbmlzdHJhdG9y";
-    const crmAuth = "YOUR_CRM_AUTH_TOKEN_HERE";
+    const crmAuth = "2XEZzhxZ_UsHBEH9V7bdYg ";
 
     try {
       const res = await $request.invokeTemplate("getLeads", {
@@ -64,7 +62,7 @@ exports = {
         }
 
         if (reservation && reservation.guest_info) {
-          await handleCheckIn(reservation, wifiAuth);
+          await handleCheckIn(reservation, wifiAuth, crmAuth);
           await handleCheckOut(reservation, wifiAuth);
         } else {
           console.info("Skipping invalid reservation payload:", event);
@@ -121,7 +119,7 @@ async function updateCrmContactByPhone(phoneNumber, registrationno, crmAuth) {
 }
 
 // Check-In Logic
-async function handleCheckIn(reservation, wifiAuth) {
+async function handleCheckIn(reservation, wifiAuth, crmAuth) {
   try {
     if (reservation.booking_status === 'CHECKED_IN') {
       const actualCheckIn = reservation.actual_check_in ? reservation.actual_check_in.split('T') : [];
@@ -142,6 +140,7 @@ async function handleCheckIn(reservation, wifiAuth) {
           "date": date,
           "time": time
         };
+        console.log(checkInPayload);
 
         const checkInResponse = await $request.invokeTemplate("checkInGuest", {
           context: { Wifi_auth: wifiAuth },
@@ -150,20 +149,26 @@ async function handleCheckIn(reservation, wifiAuth) {
 
         console.info("Check-In Success:", checkInResponse);
 
-        const mobileNumber = reservation.guest_info.phone;
-        const crmData = await searchCrmContactByPhone(mobileNumber);
+        // ✅ Only proceed to CRM update if check-in to WiFi server was successful
+        if (checkInResponse && checkInResponse.success) {
+          const mobileNumber = reservation.guest_info.phone;
+          const crmData = await searchCrmContactByPhone(mobileNumber);
 
-        if (crmData && crmData.length > 0) {
-          const crmContact = crmData.find(contact => contact.phone_number === mobileNumber);
+          if (crmData && crmData.length > 0) {
+            const crmContact = crmData.find(contact => contact.phone_number === mobileNumber);
 
-          if (crmContact) {
-            const crmUpdateResponse = await updateCrmContactByPhone(mobileNumber, registrationWithCode, wifiAuth);
-            console.info("CRM Update Success:", crmUpdateResponse);
+            if (crmContact) {
+              // Use crmAuth here correctly
+              const crmUpdateResponse = await updateCrmContactByPhone(mobileNumber, registrationWithCode, crmAuth);
+              console.info("CRM Update Success:", crmUpdateResponse);
+            } else {
+              console.info("No matching CRM contact found for mobile number:", mobileNumber);
+            }
           } else {
-            console.info("No matching CRM contact found for mobile number:", mobileNumber);
+            console.info("No CRM data found for mobile number:", mobileNumber);
           }
         } else {
-          console.info("No CRM data found for mobile number:", mobileNumber);
+          console.warn("Skipping CRM update. WiFi check-in failed.");
         }
       }
     } else {
@@ -173,6 +178,7 @@ async function handleCheckIn(reservation, wifiAuth) {
     console.error("Check-In Error:", error);
   }
 }
+
 
 // Check-Out Logic
 async function handleCheckOut(reservation, wifiAuth) {
@@ -202,6 +208,8 @@ async function handleCheckOut(reservation, wifiAuth) {
                 "date": date,
                 "time": time
               };
+              console.log(checkOutPayload);
+
 
               const checkOutResponse = await $request.invokeTemplate("checkOutGuest", {
                 context: { Wifi_auth: wifiAuth },

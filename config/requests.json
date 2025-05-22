@@ -66,23 +66,7 @@
   "searchCRMByPhone": {
     "schema": {
       "method": "GET",
-      "host": "api.freshworks.com",
-      "path": "/crm/sales/api/contacts",
-      "protocol": "https",
-      "headers": {
-        "Authorization": "Bearer <%= context.crmAuth %>",
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      }
-    },
-    "options": {
-      "retryDelay": 1000
-    }
-  },
-  "retrieveCRMContact": {
-    "schema": {
-      "method": "GET",
-      "host": "api.freshworks.com",
+      "host": "indiestays-chat.myfreshworks.com",
       "path": "/crm/sales/api/contacts",
       "protocol": "https",
       "headers": {
@@ -98,8 +82,8 @@
   "updateCRMContactByPhone": {
     "schema": {
       "method": "PUT",
-      "host": "api.freshworks.com",
-      "path": "/crm/sales/api/contacts/<%= context.contactId %>",
+      "host": "indiestays-chat.myfreshworks.com",
+      "path": "/crm/sales/api/contacts",
       "protocol": "https",
       "headers": {
         "Authorization": "Bearer <%= context.crmAuth %>",
