@@ -74,7 +74,6 @@ exports = {
   }
 };
 
-// Util: Unique code generator
 const used = new Set();
 const generateUniqueCode = () => {
   if (used.size === 9000) throw "All 4-digit codes used";
@@ -89,7 +88,7 @@ const generateUniqueCode = () => {
 async function searchCrmContactByPhone(phoneNumber) {
   try {
     const response = await $request.invokeTemplate("searchCRMByPhone", {
-      body: JSON.stringify({ phoneNumber }) // Sending payload in body
+      body: JSON.stringify({ phoneNumber })
     });
     return JSON.parse(response.response);
   } catch (error) {
@@ -98,22 +97,19 @@ async function searchCrmContactByPhone(phoneNumber) {
   }
 }
 
-// CRM Update by Phone
-async function updateCrmContactByPhone(phoneNumber, registrationno, crmAuth) {
+// CRM Update Full Contact by ID
+async function updateCrmContactFields(contactId, updatePayload, crmAuth) {
   try {
-    const payload = {
-      "mobile_number": phoneNumber,
-      "registrationno": registrationno
-    };
-
-    const response = await $request.invokeTemplate("updateCRMContactByPhone", {
+    const response = await $request.invokeTemplate("updateCRMContactFieldsById", {
       context: { crmAuth },
-      body: JSON.stringify(payload) // Sending payload in body
+      body: JSON.stringify({
+        contactId,
+        ...updatePayload
+      })
     });
-
     return response;
   } catch (error) {
-    console.error("Error updating CRM contact:", error);
+    console.error("Error updating CRM contact fields:", error);
     return null;
   }
 }
@@ -121,63 +117,88 @@ async function updateCrmContactByPhone(phoneNumber, registrationno, crmAuth) {
 // Check-In Logic
 async function handleCheckIn(reservation, wifiAuth, crmAuth) {
   try {
-    if (reservation.booking_status === 'CHECKED_IN') {
-      const actualCheckIn = reservation.actual_check_in ? reservation.actual_check_in.split('T') : [];
-      const date = actualCheckIn.length > 0 ? actualCheckIn[0].slice(2).replace(/-/g, '') : '';
-      const time = actualCheckIn.length > 1 ? actualCheckIn[1].split('.')[0].replace(/:/g, '') : '';
-
-      for (let i = 0; i < reservation.adult_count; i++) {
-        const guestshare = i === 0 ? "N" : "Y";
-        const uniqueCode = generateUniqueCode();
-        const registrationWithCode = `${reservation.reservation_no}${uniqueCode}`;
-
-        const checkInPayload = {
-          "roomno": reservation.room_number,
-          "registrationno": registrationWithCode,
-          "guestshare": guestshare,
-          "guestname": `${reservation.guest_info.first_name} ${reservation.guest_info.last_name}`,
-          "firstname": reservation.guest_info.first_name,
-          "date": date,
-          "time": time
-        };
-        console.log(checkInPayload);
-
-        const checkInResponse = await $request.invokeTemplate("checkInGuest", {
-          context: { Wifi_auth: wifiAuth },
-          body: JSON.stringify(checkInPayload) // Sending payload in body 
-        });
-
-        console.info("Check-In Success:", checkInResponse);
-
-        // ✅ Only proceed to CRM update if check-in to WiFi server was successful
-        if (checkInResponse && checkInResponse.success) {
-          const mobileNumber = reservation.guest_info.phone;
-          const crmData = await searchCrmContactByPhone(mobileNumber);
-
-          if (crmData && crmData.length > 0) {
-            const crmContact = crmData.find(contact => contact.phone_number === mobileNumber);
-
-            if (crmContact) {
-              // Use crmAuth here correctly
-              const crmUpdateResponse = await updateCrmContactByPhone(mobileNumber, registrationWithCode, crmAuth);
-              console.info("CRM Update Success:", crmUpdateResponse);
-            } else {
-              console.info("No matching CRM contact found for mobile number:", mobileNumber);
-            }
-          } else {
-            console.info("No CRM data found for mobile number:", mobileNumber);
-          }
-        } else {
-          console.warn("Skipping CRM update. WiFi check-in failed.");
-        }
-      }
-    } else {
+    if (reservation.booking_status !== 'CHECKED_IN') {
       console.log(`Skipping check-in. Booking status is '${reservation.booking_status}'`);
+      return;
     }
+
+    const actualCheckIn = reservation.actual_check_in ? reservation.actual_check_in.split('T') : [];
+    const date = actualCheckIn.length > 0 ? actualCheckIn[0].slice(2).replace(/-/g, '') : '';
+    const time = actualCheckIn.length > 1 ? actualCheckIn[1].split('.')[0].replace(/:/g, '') : '';
+
+    const mobileNumber = reservation.guest_info.phone;
+
+    let updatePayload = {};
+
+    // 1. Perform check-in for all adults, build updatePayload for CRM update later
+    for (let i = 0; i < reservation.adult_count; i++) {
+      const guestshare = i === 0 ? "N" : "Y";
+      const uniqueCode = generateUniqueCode();
+      const registrationWithCode = `${reservation.reservation_no}${uniqueCode}`;
+
+      const checkInPayload = {
+        "roomno": reservation.room_number,
+        "registrationno": registrationWithCode,
+        "guestshare": guestshare,
+        "guestname": `${reservation.guest_info.first_name} ${reservation.guest_info.last_name}`,
+        "firstname": reservation.guest_info.first_name,
+        "date": date,
+        "time": time
+      };
+      console.log(" Sending Check-In Payload:", checkInPayload);
+
+      const checkInResponse = await $request.invokeTemplate("checkInGuest", {
+        context: { Wifi_auth: wifiAuth },
+        body: JSON.stringify(checkInPayload)
+      });
+
+      const index = i + 1;
+      const regField = `cf_wifi_reg_no_${index}`;
+      const flagField = `cf_wifi_checkin_flag${index}`;
+      const commentField = `cf_wifi_checkin_comment${index}`;
+
+      if (checkInResponse && checkInResponse.success) {
+        console.info(` Check-In Success for Adult ${index}`);
+        updatePayload[regField] = registrationWithCode;
+        updatePayload[flagField] = true;
+        updatePayload[commentField] = "WiFi enabled";
+      } else {
+        console.warn(` WiFi check-in failed for Adult ${index}`);
+        updatePayload[regField] = registrationWithCode;
+        updatePayload[flagField] = false;
+        updatePayload[commentField] = `Error: ${checkInResponse?.message || "Unknown error"}`;
+      }
+    }
+
+    // 2. After all check-ins, search CRM contact by phone number
+    const crmData = await searchCrmContactByPhone(mobileNumber);
+
+    if (!crmData || crmData.length === 0) {
+      console.warn(`No CRM contact found. Skipping CRM update for reservation: ${reservation.reservation_no}`);
+      // No contact found, stop further processing
+      return;
+    } else {
+      // CRM data found, now check if contact with ID exists for this phone number
+      const crmContact = crmData.find(contact => contact.phone_number === mobileNumber);
+
+      if (!crmContact || !crmContact.id) {
+        console.warn(`CRM contact not found or missing ID for phone number: ${mobileNumber}. Aborting CRM update.`);
+        // Contact missing or no ID, stop processing
+        return;
+      } else {
+        // Contact with valid ID found, proceed with update
+        const contactId = crmContact.id;
+        const crmUpdateResponse = await updateCrmContactFields(contactId, updatePayload, crmAuth);
+        console.info("CRM Contact Updated:", crmUpdateResponse);
+      }
+    }
+
   } catch (error) {
-    console.error("Check-In Error:", error);
+    console.error("Error in Check-In process:", error);
   }
 }
+
+
 
 
 // Check-Out Logic

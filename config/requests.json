@@ -79,11 +79,11 @@
       "retryDelay": 1000
     }
   },
-  "updateCRMContactByPhone": {
+  "updateCrmContactFields": {
     "schema": {
       "method": "PUT",
       "host": "indiestays-chat.myfreshworks.com",
-      "path": "/crm/sales/api/contacts",
+      "path": "/crm/sales/api/contacts/<%= body.contactId %>",
       "protocol": "https",
       "headers": {
         "Authorization": "Bearer <%= context.crmAuth %>",
