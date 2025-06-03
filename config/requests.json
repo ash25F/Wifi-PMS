@@ -3,7 +3,7 @@
     "schema": {
       "method": "GET",
       "host": "00.us-west-2.api.hotelkeyapp.com",
-      "path": "/thirdparty/hotelbrand/stream/34cc76e9-e5d5-4eb5-ad6d-ea294437950f/poll?num_of_messages=1",
+      "path": "/thirdparty/hotelbrand/stream/34cc76e9-e5d5-4eb5-ad6d-ea294437950f/poll?num_of_messages=10",
       "protocol": "https",
       "headers": {
         "Authorization": "Basic <%= context.encodedToken %>",
@@ -34,7 +34,7 @@
   "checkInGuest": {
     "schema": {
       "method": "POST",
-      "host": "indisytays-wifi.com:10080",
+      "host": "bkcwifi.com:10080",
       "path": "/24online/service/PMSService/checkInGuest",
       "protocol": "http",
       "headers": {
@@ -64,31 +64,27 @@
     }
   },
   "searchCRMByPhone": {
-    "schema": {
-      "method": "GET",
-      "host": "indiestays-chat.myfreshworks.com",
-      "path": "/crm/sales/api/contacts",
-      "protocol": "https",
+      "schema": {
+      "method": "POST",
+      "host": "<%= context.domain %>",
+      "path": "<%= context.path %>",
       "headers": {
-        "Authorization": "Bearer <%= context.crmAuth %>",
-        "Content-Type": "application/json",
-        "Accept": "application/json"
+        "Authorization": "Token token=<%= context.api_key %>",
+        "Content-Type": "application/json"
       }
-    },
-    "options": {
-      "retryDelay": 1000
-    }
   },
+  "options": {
+    "retryDelay": 1000
+  }
+},
   "updateCrmContactFields": {
-    "schema": {
+      "schema": {
       "method": "PUT",
-      "host": "indiestays-chat.myfreshworks.com",
-      "path": "/crm/sales/api/contacts/<%= body.contactId %>",
-      "protocol": "https",
+      "host": "<%= context.domain %>",
+      "path": "<%= context.path %>",
       "headers": {
-        "Authorization": "Bearer <%= context.crmAuth %>",
-        "Content-Type": "application/json",
-        "Accept": "application/json"
+        "Authorization": "Token token=<%= context.api_key %>",
+        "Content-Type": "application/json"
       }
     },
     "options": {
