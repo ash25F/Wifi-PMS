@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ## Freshsales App Project
 
 Congratulations on creating your App Project! Feel free to replace this text with your project description.
@@ -33,4 +32,6 @@ Congratulations on creating your App Project! Feel free to replace this text wit
             └── onSalesAccountUpdate.json
 =======
 # IndieStays
->>>>>>> ace22b38114dea82d4a107795c8bd621aa4784d3
+=======
+# Wifi-PMS
+

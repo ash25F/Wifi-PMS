@@ -14,13 +14,14 @@
         "getLeads": {},
         "acknowledgePoll": {},
         "checkInGuest": {},
-        "checkOutGuest": {}
-
+        "checkOutGuest": {},
+        "searchCRMByPhone": {},
+        "updateCrmContactFields" : {}
       }
     }
   },
   "engines": {
-    "node": "18.20.8",
-    "fdk": "9.3.1"
+    "node": "18.16.1",
+    "fdk": "9.4.2"
   }
 }

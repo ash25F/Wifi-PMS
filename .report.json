@@ -1,5 +1,7 @@
 {
+
   "lints": [],
+
   "coverage": {
     "server\\server.js": {
       "path": "server\\server.js",
